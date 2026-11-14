@@ -9,7 +9,7 @@
 
 ---
 
-## 🏗️ Architecture
+##  Architecture
 
 ```mermaid
 flowchart LR
@@ -24,7 +24,7 @@ flowchart LR
     E --> H[Storage Account<br/>TLS 1.2, HTTPS only]
 ```
 
-## 📦 What gets deployed
+##  What gets deployed
 
 | Resource | Details |
 |---|---|
@@ -32,14 +32,14 @@ flowchart LR
 | **Network Security Group** | Attached to the `web` subnet |
 | **Storage Account** | StorageV2, LRS, TLS 1.2 minimum, HTTPS only, public blob access **disabled**, globally unique name via `uniqueString()` |
 
-## 🔐 Security highlights
+##  Security highlights
 
 - **No stored secrets.** GitHub requests a short-lived token, and Entra ID only trusts it when the repo, branch, and issuer match a federated credential.
 - **Least privilege.** The service principal has **Contributor on a single resource group**, with no access anywhere else in the subscription.
 - **Preview before every deploy.** `az deployment group what-if` shows exactly what will change before anything is touched.
 - **Hardened storage defaults** are enforced in code, not left to portal clicks.
 
-## ⚙️ How the pipeline works
+##  How the pipeline works
 
 1. A push that changes anything in `infra/` triggers the workflow. It can also be run manually.
 2. `azure/login@v2` exchanges GitHub's OIDC token for an Azure access token.
@@ -54,7 +54,7 @@ flowchart LR
     └── deploy.yml              # OIDC login → what-if → deploy
 ```
 
-## 🛠️ Problems I solved
+##  Problems I solved
 
 **1. OIDC subject mismatch (`AADSTS700213`)**
 Login failed because GitHub now sends an **immutable, ID-based subject claim**:
@@ -67,13 +67,13 @@ The Azure for Students subscription only allows deployments to an approved list 
 **3. Bicep syntax error (`BCP018`)**
 While adding the `app` subnet, a missing closing brace broke the build. The what-if stage caught it **before anything was deployed**, which is exactly why the preview gate exists.
 
-## 📸 Screenshots
+##  Screenshots
 
 | Pipeline run | What-if preview | Deployed resources |
 |---|---|---|
 | ![Actions run](docs/actions-run.png) | ![What-if](docs/what-if.png) | ![Portal](docs/portal.png) |
 
-## 🚀 Reproduce it
+##  Reproduce it
 
 ```bash
 # 1. Resource group
@@ -103,7 +103,7 @@ az group delete --name rg-iac-lab --yes --no-wait
 az ad app delete --id $APP_ID
 ```
 
-## 🧭 What's next
+##  What's next
 
 - [ ] Add NSG rules and a VM behind Azure Bastion
 - [ ] Hub-and-spoke network with Azure Firewall and UDRs
