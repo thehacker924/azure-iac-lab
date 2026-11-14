@@ -1,4 +1,4 @@
-# ☁️ Azure Infrastructure as Code with GitHub Actions + OIDC
+#  Azure Infrastructure as Code with GitHub Actions + OIDC
 
 ![Bicep](https://img.shields.io/badge/IaC-Bicep-0078D4?logo=microsoftazure&logoColor=white)
 ![GitHub Actions](https://img.shields.io/badge/CI%2FCD-GitHub%20Actions-2088FF?logo=githubactions&logoColor=white)
