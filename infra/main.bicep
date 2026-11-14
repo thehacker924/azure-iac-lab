@@ -18,7 +18,7 @@ resource vnet 'Microsoft.Network/virtualNetworks@2023-11-01' = {
     addressSpace: {
       addressPrefixes: ['10.10.0.0/16']
     }
-    subnets: [
+       subnets: [
       {
         name: 'web'
         properties: {
@@ -26,9 +26,13 @@ resource vnet 'Microsoft.Network/virtualNetworks@2023-11-01' = {
           networkSecurityGroup: { id: nsg.id }
         }
       }
+      {
+        name: 'app'
+        properties: {
+          addressPrefix: '10.10.2.0/24'
+        }
+      }
     ]
-  }
-}
 
 resource storage 'Microsoft.Storage/storageAccounts@2023-05-01' = {
   name: storageName
