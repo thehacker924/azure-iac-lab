@@ -71,7 +71,7 @@ While adding the `app` subnet, a missing closing brace broke the build. The what
 
 | Pipeline run | What-if preview | Deployed resources |
 |---|---|---|
-| ![Actions run](docs/actions-run.png) | ![What-if](docs/what-if.png) | ![Portal](docs/portal.png) |
+| ![Actions run](Saved%20Pictures/actions-run.png) | ![What-if](Saved%20Pictures/what-if.png) | ![Portal](Saved%20Pictures/portal.png) |
 
 ##  Reproduce it
 
